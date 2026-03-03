@@ -12,6 +12,7 @@ const blog = defineCollection({
     category: z.enum(['tutorials', 'tips', 'stories', 'announcements']),
     heroImage: z.string().optional(),
     draft: z.boolean().default(false),
+    pinned: z.boolean().default(false),
   }),
 });
 

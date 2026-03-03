@@ -9,9 +9,13 @@ import PostCard from '../../components/PostCard.astro';
 import CategoryNav from '../../components/CategoryNav.astro';
 
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
-const sortedPosts = allPosts.sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+const sortedPosts = allPosts.sort((a, b) => {
+  // Pinned posts always come first
+  if (a.data.pinned && !b.data.pinned) return -1;
+  if (!a.data.pinned && b.data.pinned) return 1;
+  // Then sort by date (newest first)
+  return b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
+});
 ---
 
 <MainLayout
