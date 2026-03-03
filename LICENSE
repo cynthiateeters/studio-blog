@@ -4,16 +4,29 @@ This repository contains proprietary content for HyBit Studio.
 
 ## Content license
 
-All blog posts, articles, images, and written content in this repository are
-the intellectual property of Cynthia Teeters. No part of this content may be
-reproduced, distributed, or transmitted in any form without prior written
-permission from the copyright holder.
+All content on this site — including but not limited to articles, tutorials,
+cheatsheets, code examples, images, and educational materials — is the
+intellectual property of Cynthia Teeters and is protected by copyright law.
 
-## Code license
+### Permitted uses
 
-The source code (Astro components, layouts, and configuration files) in this
-repository is provided for reference purposes only. You may not use, copy,
-modify, or distribute the code without explicit permission.
+- Personal learning and reference
+- Sharing links to content (with attribution)
+- Brief quotations with attribution and link to the original
+
+### Prohibited without written permission
+
+- Reproducing, republishing, or redistributing content
+- Creating derivative works
+- Commercial use of any kind
+- Using content to train AI/ML models
+- Incorporating content into courses, workshops, or training materials
+
+## Code examples
+
+Code snippets published on this site are provided for educational purposes.
+You may use them in your own projects, but the surrounding explanatory content
+remains protected by copyright.
 
 ## Fonts
 
@@ -21,6 +34,18 @@ The Nunito and Source Code Pro fonts included in this repository are licensed
 under the SIL Open Font License (OFL). See the respective OFL.txt files in
 the font directories for details.
 
+## Educational institution use
+
+Educators wishing to use HyBit Studio content in their courses should
+contact Cynthia Teeters directly to discuss licensing arrangements.
+
+## Disclaimer
+
+Content is provided "as is" without warranty of any kind. While accuracy is
+a priority, no guarantees are made about the completeness or currentness of
+the information. Use at your own discretion.
+
 ## Contact
 
-For licensing inquiries, contact Cynthia Teeters.
+For permissions, licensing inquiries, or questions about these terms,
+contact Cynthia Teeters.
