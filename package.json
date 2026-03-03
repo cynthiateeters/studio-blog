@@ -1,0 +1,23 @@
+{
+  "name": "hap-studio-blog",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "HAP's Studio Blog - Educational blog with HAP branding",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.16.6"
+  },
+  "keywords": [
+    "astro",
+    "blog",
+    "education",
+    "hap"
+  ],
+  "author": "Cynthia Teeters",
+  "license": "MIT"
+}

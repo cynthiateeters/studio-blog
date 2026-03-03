@@ -1,0 +1,107 @@
+---
+title: "What 'JavaScript Developer' Actually Means in 2026"
+subtitle: "A reality check for students and hiring managers"
+description: "The eight-step workflow of a typical dev day, and why only one of those steps is 'writing JavaScript.'"
+pubDate: 2026-02-15
+category: tips
+draft: false
+---
+
+Job postings ask for "JavaScript developers." Students study JavaScript syntax. But there's a gap between what people think the job is and what the job actually is.
+
+Here's what I tell my students on day one.
+
+## The eight-step workflow
+
+A typical day at your first dev job might look like this:
+
+1. **Pull** the latest code from the team's repo
+2. **Branch** for your assigned task
+3. **Write** some code
+4. **Install** a package after evaluating options
+5. **Audit** when npm flags a vulnerability
+6. **Push** and open a pull request
+7. **Respond** to code review comments
+8. **Merge**, deploy, cross your fingers
+
+Step 3 is "writing JavaScript."
+
+The other seven steps are also the job.
+
+## The skill breakdown
+
+If I had to estimate how professional developers spend their time:
+
+| Activity                             | Percentage |
+| ------------------------------------ | ---------- |
+| Writing new code                     | 30-40%     |
+| Reading existing code                | 20-25%     |
+| Debugging and testing                | 15-20%     |
+| Code review (giving and receiving)   | 10-15%     |
+| Tooling, dependencies, configuration | 10-15%     |
+| Documentation and communication      | 5-10%      |
+
+The percentages shift depending on the role and company, but the pattern holds: writing code is less than half the work.
+
+## What this means for learning
+
+Traditional coding education focuses almost exclusively on syntax and algorithms. Students learn to write functions, manipulate data structures, and solve isolated problems.
+
+That's necessary. It's not sufficient.
+
+A developer who can write elegant functions but can't:
+
+- Navigate a Git workflow without breaking things
+- Evaluate whether a dependency is trustworthy
+- Read and understand code they didn't write
+- Communicate clearly in a pull request
+
+...is going to struggle in their first job.
+
+## What this means for hiring
+
+If you're hiring junior developers, think about what you're actually screening for.
+
+Coding challenges test whether someone can write algorithms under pressure. That's a useful signal. But it doesn't tell you whether they can:
+
+- Work in a codebase they didn't create
+- Follow team conventions
+- Handle code review gracefully
+- Debug production issues
+
+Some of the best junior developers I've seen weren't the fastest at LeetCode problems. They were the ones who asked good questions, documented their work, and improved the codebase beyond their assigned tickets.
+
+## The AI shift
+
+With AI coding assistants, this reality becomes more pronounced.
+
+AI can generate boilerplate. AI can write functions. AI can even pass some coding interviews.
+
+What AI can't do:
+
+- Understand the context of your specific codebase
+- Make judgment calls about architecture
+- Navigate team dynamics and communication
+- Take responsibility when something breaks
+
+The developers who will thrive aren't the ones who can write code fastest. They're the ones who can evaluate AI-generated code, integrate it into existing systems, and maintain quality standards.
+
+The job is becoming less about typing code and more about everything around the code.
+
+## What I teach now
+
+My courses have shifted. I still teach syntax—you need the fundamentals. But I spend significant time on:
+
+- **Git workflows** — branching, pull requests, code review
+- **Dependency management** — evaluating packages, handling vulnerabilities
+- **Reading code** — understanding codebases you didn't write
+- **Security basics** — the mistakes that get junior developers in trouble
+- **Professional communication** — commit messages, PR descriptions, documentation
+
+Students sometimes ask why we're not "just coding." This is why.
+
+The job title says "JavaScript Developer." The job itself is broader than that. I want students ready for the actual job, not just the title.
+
+---
+
+_For students: learn the syntax, but don't stop there. For hiring managers: test for the whole job, not just the coding part._

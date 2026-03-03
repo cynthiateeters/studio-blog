@@ -1,0 +1,94 @@
+---
+title: "The Debugging Duck: Why I Mail Rubber Ducks to My Students"
+subtitle: "The psychology behind a decades-old debugging technique"
+description: "Rubber duck debugging sounds silly until you try it. Here's why I send physical ducks to my students—and what it teaches about learning, asking questions, and psychological safety."
+pubDate: 2026-01-21
+category: stories
+draft: false
+---
+
+I mail rubber ducks to my students.
+
+Yellow ones, mostly. Sometimes orange or blue if they have a preference. I buy them in bulk and ship them to whoever fills out the form.
+
+This isn't a gimmick. It's a teaching tool with decades of history behind it—and some interesting psychology.
+
+## What is rubber duck debugging?
+
+The technique is simple: when you're stuck on a problem, explain your code to the duck. Line by line. Out loud.
+
+Yes, really.
+
+Something about verbalizing your logic helps you spot the bug yourself. The duck doesn't need to understand—_you_ do the understanding by explaining.
+
+Programmers have been doing this since at least the 1990s. The name comes from a story in "The Pragmatic Programmer," though the practice is older than the book.
+
+## Why it works
+
+**Forces you to slow down.** When you're stuck, the temptation is to keep changing things, hoping something works. Explaining to the duck makes you articulate what each line is supposed to do. You can't mumble past the confusing parts.
+
+**Shifts your perspective.** When you're deep in your own code, you see what you expect to see. Explaining to someone (or something) else forces you to step back and view the code as a reader would.
+
+**Exposes assumptions.** "And then this variable has the value..." Wait. Does it? Saying it out loud makes you question what you're taking for granted.
+
+**No judgment.** The duck doesn't think your question is stupid. The duck doesn't sigh. The duck is always ready to listen.
+
+## The real reason I send ducks
+
+The physical duck serves a purpose beyond the debugging technique.
+
+It's a reminder that asking for help is normal.
+
+Students often hesitate to ask questions. They worry about looking dumb. They think everyone else understands. They struggle alone for hours before reaching out.
+
+The duck gives them permission to talk through problems. It normalizes the idea that even experienced developers need to externalize their thinking to solve hard problems.
+
+When students tell me they talked to their duck before emailing me, I know they're developing the right instincts. They tried to solve it themselves. They articulated the problem clearly. Often, the act of preparing to ask the question answers it.
+
+## What the duck teaches about AI
+
+Here's something I've noticed: students who are comfortable with rubber duck debugging use AI assistants more effectively.
+
+The skills are related:
+
+| Rubber duck debugging           | Prompting AI                    |
+| ------------------------------- | ------------------------------- |
+| Explain the problem clearly     | Write a clear prompt            |
+| State what you expected         | Describe the desired outcome    |
+| Describe what actually happened | Provide context about the error |
+| Walk through your logic         | Share relevant code             |
+
+Students who can articulate a problem to a duck can articulate it to ChatGPT or Claude. Students who skip the articulation step paste in code and say "fix this"—and get frustrated when the AI misunderstands.
+
+The duck teaches the discipline of clear communication. That discipline transfers everywhere.
+
+## Debugging is a social skill
+
+This might sound strange, but debugging is partly a social skill.
+
+The ability to explain what you're trying to do, what's going wrong, and what you've already tried is essential for:
+
+- Getting help from teammates
+- Writing good bug reports
+- Pair programming effectively
+- Communicating with AI assistants
+- Documenting issues for your future self
+
+The duck is practice for all of this. Low stakes, no judgment, always available.
+
+## The practical details
+
+For anyone curious about the logistics:
+
+- I buy bulk packs of rubber ducks online (various colors)
+- Students fill out a form with their color preference and campus mailing address
+- I ship them via the college mail system
+- Total cost is maybe $3-4 per student including postage
+
+It's not expensive. The pedagogical value is high. And students remember it.
+
+I've had former students tell me years later that they still have their duck on their desk. That's the point. Every time they see it, they remember: it's okay to talk through problems. It's okay to slow down. It's okay to ask for help—even if the help is a small yellow bird that doesn't say anything back.
+
+---
+
+_If you teach programming, consider the rubber duck. It's a small investment that teaches debugging, communication, and psychological safety all at once._

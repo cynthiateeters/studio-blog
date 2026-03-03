@@ -1,0 +1,100 @@
+---
+/**
+ * PostCard.astro - Card component for blog post listings
+ */
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  category: string;
+  slug: string;
+}
+
+const { title, description, pubDate, category, slug } = Astro.props;
+
+const formattedDate = pubDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric'
+});
+---
+
+<article class="post-card">
+  <a href={`/blog/${slug}/`} class="card-link">
+    <div class="card-meta">
+      <time datetime={pubDate.toISOString()}>{formattedDate}</time>
+      <span class="category-badge">{category}</span>
+    </div>
+
+    <h2 class="card-title">{title}</h2>
+    <p class="card-description">{description}</p>
+
+    <span class="read-more">Read more &rarr;</span>
+  </a>
+</article>
+
+<style>
+  .post-card {
+    background-color: var(--cream-white);
+    border-radius: 0.75rem;
+    border: 1px solid var(--soft-orange);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px hsla(32, 76%, 37%, 0.15);
+  }
+
+  .card-link {
+    display: block;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .card-meta time {
+    font-size: 0.85rem;
+    color: var(--light-brown);
+  }
+
+  .category-badge {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    background-color: var(--soft-orange);
+    color: var(--dark-brown);
+    border-radius: 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+    color: var(--dark-brown);
+    margin: 0 0 0.5rem 0;
+    line-height: 1.3;
+  }
+
+  .card-description {
+    font-size: 0.95rem;
+    color: var(--medium-brown);
+    margin: 0 0 1rem 0;
+    line-height: 1.5;
+  }
+
+  .read-more {
+    color: var(--teal-darker);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+</style>

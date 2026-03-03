@@ -1,0 +1,141 @@
+---
+/**
+ * index.astro - Blog home page
+ */
+
+import { getCollection } from 'astro:content';
+import MainLayout from '../layouts/MainLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import CategoryNav from '../components/CategoryNav.astro';
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const sortedPosts = allPosts.sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const recentPosts = sortedPosts.slice(0, 6);
+
+---
+
+<MainLayout
+  title="HyBit Studio"
+  description="AI-augmented curriculum resources and practitioner insights for web developers, from educator Cynthia Teeters."
+>
+  <section class="hero">
+    <div class="hero-text">
+      <h1>HyBit Studio</h1>
+      <p class="intro">
+        I'm Cynthia Teeters, an educator and practitioner building AI-augmented
+        curriculum for web developers. I teach Web Development and JavaScript at
+        Raritan Valley Community College, where I've been using GitHub Classroom since 2019.
+      </p>
+      <p>
+        Here you'll find resources, cheatsheets, and practitioner insights on working
+        with AI tools intentionally — not as a shortcut, but as a collaborator. The
+        difference between developers who thrive with AI and those who struggle comes
+        down to process, context, and transparency.
+      </p>
+      <p class="mission">
+        This is where I share what I'm learning while building HAP Learning Labs and
+        teaching students to be thoughtful practitioners in an AI-native world.
+      </p>
+    </div>
+  </section>
+
+  <section class="posts-section">
+    <h2>Recent Posts</h2>
+    <CategoryNav currentCategory="all" />
+
+    <div class="posts-grid">
+      {recentPosts.map((post) => (
+        <PostCard
+          title={post.data.title}
+          description={post.data.description}
+          pubDate={post.data.pubDate}
+          category={post.data.category}
+          slug={post.id}
+        />
+      ))}
+    </div>
+
+    {sortedPosts.length > 6 && (
+      <a href="/blog/" class="view-all">View all posts &rarr;</a>
+    )}
+  </section>
+</MainLayout>
+
+<style>
+  .hero {
+    background-color: var(--cream-white);
+    padding: 2.5rem;
+    border-radius: 1rem;
+    margin-bottom: 3rem;
+    border-left: 4px solid var(--warm-orange);
+  }
+
+  .hero-text h1 {
+    color: var(--dark-brown);
+    margin-bottom: 1.25rem;
+    font-size: 2.25rem;
+  }
+
+  .hero-text p {
+    color: var(--medium-brown);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin: 0 0 1rem 0;
+  }
+
+  .hero-text p:last-child {
+    margin-bottom: 0;
+  }
+
+  .hero-text .intro {
+    color: var(--dark-brown);
+    font-size: 1.15rem;
+    font-weight: 500;
+  }
+
+  .hero-text .mission {
+    color: var(--teal-darker);
+    font-style: italic;
+  }
+
+  .posts-section h2 {
+    color: var(--dark-brown);
+    margin-bottom: 1rem;
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .view-all {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--warm-orange);
+    color: var(--cream-white);
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+  }
+
+  .view-all:hover {
+    background-color: var(--orange-darker);
+    color: var(--cream-white);
+  }
+
+  @media (max-width: 600px) {
+    .hero {
+      padding: 1.5rem;
+    }
+
+    .hero-text h1 {
+      font-size: 1.75rem;
+    }
+  }
+</style>

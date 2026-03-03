@@ -1,0 +1,100 @@
+---
+title: "How I Use AI to Grade More Fairly (And Why I Tell My Students)"
+subtitle: "Addressing grader drift with AI-assisted evaluation"
+description: "A transparent look at using AI for assignment evaluation—addressing 'grader drift,' maintaining consistency, and modeling responsible AI practices for students."
+pubDate: 2026-02-07
+category: stories
+draft: false
+---
+
+I use AI to help evaluate student assignments. And I tell my students exactly how.
+
+This might sound controversial, but hear me out. The goal isn't to automate grading—it's to grade more fairly.
+
+## The problem: Evaluation drift
+
+When a human grader evaluates many student submissions in sequence, three types of drift commonly occur:
+
+**Fatigue drift:** After reviewing the 5th or 6th submission, mental fatigue sets in. Early submissions often receive more detailed feedback than later ones. A clever observation in submission #2 might get highlighted, while a similar insight in submission #15 goes unnoticed.
+
+**Anchor drift:** The previous submission influences how the next one is perceived. If submission #7 is exceptionally strong, submission #8 may seem weaker by comparison—even if it meets all requirements.
+
+**Consistency drift:** Criteria that seemed clear at the start become fuzzy over time. "Did I count that as complete for the earlier students?" becomes a recurring question.
+
+Every instructor has experienced this. Few talk about it openly.
+
+## The solution: AI as a consistency partner
+
+AI analysis doesn't replace my evaluation—it augments it. The AI reviews every submission against the same criteria, in the same way, without fatigue. This gives me:
+
+- A consistent first pass across all submissions
+- Flagged items that need my attention
+- A structured overview before I dive into individual feedback
+- More time for meaningful, personalized comments
+
+The AI flags patterns. I make all decisions.
+
+## What the AI does and doesn't do
+
+**The AI does:**
+
+- Verify that required files and sections exist
+- Check whether code follows expected patterns
+- Identify patterns across the class (common errors, creative approaches)
+- Generate a structured first-pass summary for my review
+
+**The AI does not:**
+
+- Assign grades or scores
+- Make final judgments about understanding
+- Replace my reading of student work
+- Access anything outside public GitHub repositories
+
+Every evaluation I provide has been reviewed and approved by me. The AI is a tool that helps me be more consistent—not a replacement for human judgment.
+
+## Why I tell students
+
+Transparency isn't optional here. It's the point.
+
+My students complete an AI Fluency certificate that teaches Anthropic's 4D Framework: Delegation, Description, Discernment, and Diligence. If I'm going to teach responsible AI use, I need to model it.
+
+So I explain:
+
+- **What** AI sees (the same assignment docs they see)
+- **How** AI assists (flagging patterns, not making decisions)
+- **Why** this benefits them (consistent evaluation regardless of submission order)
+- **What** they can ask (to see the AI analysis of their own work)
+
+Students can request to see exactly what the AI said about their submission. Transparency works both ways.
+
+## The unexpected benefit
+
+Here's what I didn't anticipate: explaining AI-assisted evaluation teaches students something valuable about working with AI themselves.
+
+The structured assignment formats I use aren't arbitrary. They create conditions for fair evaluation by both humans and AI. When I design templates with specific file names and section headers, I'm modeling the same practices students need when prompting AI tools:
+
+- Clear structure
+- Explicit criteria
+- Anchoring reference points
+
+Students see that vague inputs get vague outputs—whether that's a student submission missing required sections, or a prompt missing necessary context.
+
+## The parallel that matters
+
+Human grader drift and AI context drift share the same solution:
+
+| Human grader drift                        | AI context drift                                 |
+| ----------------------------------------- | ------------------------------------------------ |
+| Fatigue changes attention to detail       | Long contexts dilute focus on key elements       |
+| Previous submissions influence perception | Earlier conversation shapes later responses      |
+| Criteria interpretation shifts over time  | Instructions can be "forgotten" in long sessions |
+
+**The fix for both:** Clear structure, explicit criteria, and anchoring reference points.
+
+This is the lesson I want students to carry into their careers. AI is a tool. Tools require thoughtful use. The developers who thrive with AI will be the ones who understand how to structure inputs, evaluate outputs, and maintain human oversight.
+
+I'm not just grading more fairly. I'm teaching what responsible AI collaboration looks like in practice.
+
+---
+
+_If you're an educator considering AI-assisted evaluation, I'm happy to share more about my workflow. The key is transparency—with yourself about why you're using it, and with students about how._

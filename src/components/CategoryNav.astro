@@ -1,0 +1,67 @@
+---
+/**
+ * CategoryNav.astro - Category navigation pills
+ */
+
+interface Props {
+  currentCategory?: string;
+}
+
+const { currentCategory } = Astro.props;
+
+const categories = [
+  { name: 'all', label: 'All Posts', href: '/blog/' },
+  { name: 'tutorials', label: 'Tutorials', href: '/categories/tutorials/' },
+  { name: 'tips', label: 'Tips', href: '/categories/tips/' },
+  { name: 'stories', label: 'Stories', href: '/categories/stories/' },
+  { name: 'announcements', label: 'News', href: '/categories/announcements/' }
+];
+---
+
+<nav class="category-nav" aria-label="Blog categories">
+  <ul>
+    {categories.map((cat) => (
+      <li>
+        <a
+          href={cat.href}
+          class:list={['category-pill', { active: currentCategory === cat.name }]}
+        >
+          {cat.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .category-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .category-pill {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background-color: var(--peach-background);
+    color: var(--medium-brown);
+    border-radius: 1.5rem;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .category-pill:hover {
+    background-color: var(--soft-orange);
+    color: var(--dark-brown);
+  }
+
+  .category-pill.active {
+    background-color: var(--warm-orange);
+    color: var(--cream-white);
+  }
+</style>

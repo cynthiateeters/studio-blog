@@ -1,0 +1,36 @@
+---
+/**
+ * Footer.astro - Site footer
+ */
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <p class="copyright">
+      &copy; {currentYear} Cynthia Teeters. HyBit Studio.
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: var(--dark-brown);
+    color: var(--cream-white);
+    padding: 1.5rem 2rem;
+    margin-top: auto;
+  }
+
+  .footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .copyright {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+</style>
