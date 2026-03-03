@@ -1,0 +1,39 @@
+---
+/**
+ * ResponsiveFigure.astro
+ * Generates responsive images using Cloudinary srcset
+ */
+
+interface Props {
+  src: string;        // Cloudinary public_id (e.g., "canvas/hap/hap-robot")
+  alt: string;
+  caption?: string;
+  sizes?: string;     // Default: "(max-width: 600px) 100vw, 480px"
+}
+
+const { src, alt, caption, sizes = "(max-width: 600px) 100vw, 480px" } = Astro.props;
+
+const baseUrl = "https://res.cloudinary.com/cynthia-teeters/image/upload";
+const transforms = "f_auto,q_auto,c_limit";
+
+// Generate srcset for common breakpoints
+const widths = [320, 480, 640, 800];
+const srcset = widths
+  .map(w => `${baseUrl}/${transforms},w_${w}/${src} ${w}w`)
+  .join(", ");
+
+const defaultSrc = `${baseUrl}/${transforms},w_480/${src}`;
+---
+
+<figure>
+  <img
+    src={defaultSrc}
+    srcset={srcset}
+    sizes={sizes}
+    alt={alt}
+    width="480"
+    height="480"
+    loading="lazy"
+  />
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>

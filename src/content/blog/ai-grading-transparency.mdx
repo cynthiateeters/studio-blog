@@ -8,11 +8,13 @@ draft: false
 ---
 
 import ComparisonGrid from '../../components/ComparisonGrid.astro';
+import ResponsiveFigure from '../../components/ResponsiveFigure.astro';
 
-<figure>
-  <img src="https://res.cloudinary.com/cynthia-teeters/image/upload/f_auto,q_auto,w_480,c_limit/canvas/hap/hap-and-claude" alt="HAP robot with lightbulb head standing next to smaller sage-green Claude Code robot holding tablet, both with rosy cheeks on warm peach background" style="max-width: 480px; border-radius: 5%;" loading="lazy" />
-  <figcaption>HAP and Claude — AI partners in learning.</figcaption>
-</figure>
+<ResponsiveFigure
+  src="canvas/hap/hap-and-claude"
+  alt="HAP robot with lightbulb head standing next to smaller sage-green Claude Code robot holding tablet, both with rosy cheeks on warm peach background"
+  caption="HAP and Claude — AI partners in learning."
+/>
 
 I use AI to help evaluate student assignments. And I tell my students exactly how.
 

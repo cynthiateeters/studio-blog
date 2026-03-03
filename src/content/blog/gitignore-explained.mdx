@@ -8,11 +8,13 @@ draft: false
 ---
 
 import InfoCards from '../../components/InfoCards.astro';
+import ResponsiveFigure from '../../components/ResponsiveFigure.astro';
 
-<figure>
-  <img src="https://res.cloudinary.com/cynthia-teeters/image/upload/f_auto,q_auto,w_480,c_limit/canvas/hap/hap-safari" alt="HAP robot wearing safari outfit and pith helmet looking through binoculars" style="max-width: 480px; border-radius: 5%;" loading="lazy" />
-  <figcaption>Exploring hidden files in the wild.</figcaption>
-</figure>
+<ResponsiveFigure
+  src="canvas/hap/hap-safari"
+  alt="HAP robot wearing safari outfit and pith helmet looking through binoculars"
+  caption="Exploring hidden files in the wild."
+/>
 
 Every project has files that shouldn't be shared. Some contain secrets. Some are too large. Some are generated automatically.
 

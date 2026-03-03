@@ -110,6 +110,7 @@ figure {
 
 figure img {
   margin: 0 auto;
+  border-radius: 5%;
 }
 
 figcaption {

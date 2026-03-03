@@ -8,11 +8,13 @@ draft: false
 ---
 
 import InfoCards from '../../components/InfoCards.astro';
+import ResponsiveFigure from '../../components/ResponsiveFigure.astro';
 
-<figure>
-  <img src="https://res.cloudinary.com/cynthia-teeters/image/upload/f_auto,q_auto,w_480,c_limit/canvas/hap/hap-pointing-up" alt="HAP robot pointing upward with one finger, smiling encouragingly" style="max-width: 480px; border-radius: 5%;" loading="lazy" />
-  <figcaption>Simple tools win — HAP approves of Markdown.</figcaption>
-</figure>
+<ResponsiveFigure
+  src="canvas/hap/hap-pointing-up"
+  alt="HAP robot pointing upward with one finger, smiling encouragingly"
+  caption="Simple tools win — HAP approves of Markdown."
+/>
 
 Markdown is a lightweight way to format text using plain characters. If you've ever read a README file on GitHub, you've already seen it in action.
 
