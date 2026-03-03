@@ -1,0 +1,85 @@
+---
+title: "The 37 MB of Code You Didn't Write"
+subtitle: "Why npm dependencies can be dangerous"
+description: "You ran npm install and got hundreds of packages. Do you trust all of them? Your project depends on code written by strangers—and that code can have security holes."
+pubDate: 2026-02-15
+category: tutorials
+draft: false
+---
+
+You ran `npm install` and it downloaded over a hundred packages. Do you trust all of them?
+
+You didn't write those packages. You probably didn't read their code. But they're running on your machine, and they'll ship with your project.
+
+**Try this:** In VS Code, expand the `node_modules` folder. Keep scrolling. A typical project with a handful of direct dependencies contains over 100 packages weighing 37 MB. Your actual code is maybe 9 MB.
+
+Strangers wrote the rest.
+
+## The dependency tree problem
+
+Say you're building a website with Vite. You run:
+
+```bash
+npm install vite
+```
+
+npm downloads Vite. But Vite depends on esbuild, and esbuild depends on more packages. You asked for one package. You got dozens.
+
+Later, a security researcher discovers a bug in esbuild. Any website you visit while running the dev server could read your source code.
+
+You never installed esbuild. You don't know it's there. But it's in your project, and it's vulnerable.
+
+## This has a name: CVE
+
+When someone discovers a security vulnerability, it gets a **CVE**—a Common Vulnerabilities and Exposures identifier. Think of it as a serial number for a specific bug.
+
+| Severity | What it means                        |
+| -------- | ------------------------------------ |
+| Low      | Minor issue, hard to exploit         |
+| Moderate | Real risk under certain conditions   |
+| High     | Significant risk, likely exploitable |
+| Critical | Actively dangerous, fix immediately  |
+
+## How to check
+
+npm has a built-in tool:
+
+```bash
+npm audit
+```
+
+It checks every package in your `node_modules` against a database of known CVEs. Output looks like:
+
+```
+# npm audit report
+
+esbuild  <=0.24.2
+Severity: moderate
+fix available via `npm audit fix --force`
+
+2 moderate severity vulnerabilities
+```
+
+The fix is usually an update:
+
+```bash
+npm audit fix
+```
+
+## Why this matters
+
+In 2021, a vulnerability in Log4j affected millions of Java applications worldwide. The developers didn't write the bug. They just depended on a package that had one.
+
+Running `npm audit` and keeping dependencies updated is basic professional hygiene. It's like washing your hands—you do it routinely.
+
+## Why AI gets this wrong
+
+If you ask AI to set up a project, it generates a `package.json` with specific version numbers. Those versions were current when the AI's training data was collected.
+
+AI doesn't track CVEs. It doesn't know that Vite 5.1.0 has a vulnerability fixed in 5.4.21. It learned from code that used 5.1.0, so that's what it suggests.
+
+**Always run `npm audit` yourself.** No matter what AI tells you, check the actual database.
+
+---
+
+_Your project depends on code written by strangers. Vulnerabilities in those packages become your vulnerabilities. The good news: one command tells you if you have a problem._

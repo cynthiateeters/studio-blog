@@ -1,0 +1,75 @@
+---
+title: "Why Markdown Won"
+subtitle: "The format developers chose for everything"
+description: "If you've read a README on GitHub, you've seen markdown. Here's why this 2004 invention became the standard for developer documentation—and why AI tools use it too."
+pubDate: 2026-01-21
+category: tutorials
+draft: false
+---
+
+Markdown is a lightweight way to format text using plain characters. If you've ever read a README file on GitHub, you've already seen it in action.
+
+John Gruber created markdown in 2004 with help from Aaron Swartz. Their goal was simple: let people write for the web as easily as writing an email.
+
+## Before markdown
+
+Your options were limited:
+
+- **HTML** — powerful but verbose (`<strong>bold</strong>` instead of `**bold**`)
+- **Rich text editors** — create files only that editor can open
+- **Plain text** — no formatting at all
+
+Markdown found the sweet spot. It borrowed formatting conventions people already used in emails (like _asterisks for emphasis_) and gave them consistent meaning.
+
+The design philosophy: **readable as-is**. A markdown file should make sense even if you never convert it to HTML.
+
+## Why developers chose it
+
+### Plain text works with Git
+
+Every change to a markdown file shows up clearly in diffs. You can see exactly what was added or removed. Try doing that with a Word document.
+
+### Plain text never becomes obsolete
+
+Word documents from 2004 may not open correctly today. Markdown files from 2004 are just text—they'll open in any editor, forever.
+
+### No vendor lock-in
+
+You're not tied to Microsoft, Google, or any company. Edit markdown in VS Code, Notepad, vim, or any editor that exists now or will exist.
+
+### Small file sizes
+
+A markdown file is typically kilobytes. The same content in Word might be megabytes.
+
+## Where you'll encounter it
+
+- **GitHub** — READMEs, issues, pull requests, wikis
+- **Documentation sites** — API docs, developer guides
+- **Static site generators** — Eleventy, Astro, Hugo, Jekyll
+- **Note-taking apps** — Obsidian, Notion
+- **AI configuration files** — `.github/copilot-instructions.md`
+
+## The AI connection
+
+The developers building AI coding assistants needed a way for users to give instructions. What format did they choose? Markdown.
+
+This wasn't a coincidence. Choosing markdown meant users already knew the format, files work with existing tools, and instructions are both human-readable AND machine-parseable.
+
+When you create a `.github/copilot-instructions.md` file, your AI assistant reads it to understand your project's conventions. It's just a text file with structure that both humans and AI understand.
+
+## Quick reference
+
+| Element    | Syntax          | Notes           |
+| ---------- | --------------- | --------------- |
+| Heading 1  | `# Title`       | Page title      |
+| Heading 2  | `## Section`    | Main sections   |
+| Bold       | `**text**`      | Strong emphasis |
+| Italic     | `*text*`        | Light emphasis  |
+| Link       | `[text](url)`   | Clickable       |
+| Code       | `` `code` ``    | Inline snippets |
+| Code block | ` ```language ` | Multi-line code |
+| List       | `- item`        | Bullets         |
+
+---
+
+_The skill you build writing clear markdown now extends to communicating with AI assistants, documenting projects, and writing for the web. One format, many uses._

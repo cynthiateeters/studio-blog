@@ -1,0 +1,59 @@
+---
+title: "Free AI Tools Every Student Developer Should Know About"
+subtitle: "What's available and what the tradeoffs are"
+description: "AI-powered development tools have become standard in professional workflows. As a student, you have access to many for free—here's what's worth knowing."
+pubDate: 2026-01-17
+category: tips
+draft: false
+---
+
+AI-powered development tools have become standard in professional workflows. As a student, you have access to many of these tools for free—either through student programs or generous free tiers.
+
+Knowing what's available (and what the tradeoffs are) is part of being a resourceful developer.
+
+## GitHub Student Developer Pack
+
+If you don't have this yet, stop reading and go sign up.
+
+The GitHub Student Developer Pack gives you free access to professional tools that would otherwise cost hundreds of dollars per year. Verification requires a school email or enrollment documentation.
+
+The most relevant tool: **GitHub Copilot Pro**—an AI coding assistant that works inside VS Code. Normally $10/month, free for students.
+
+The pack includes dozens of other tools for cloud hosting, databases, and design. No credit card required for most of it.
+
+## Google AI Pro (student trial)
+
+Google offers students a free 1-year trial of Google AI Pro, including:
+
+- Gemini Advanced
+- NotebookLM Pro
+- Deep Research
+- 2 TB Google Drive storage
+
+**The catch:** You need to add a payment method. Google will charge you after the free year if you don't cancel. Set a calendar reminder for 11 months from now.
+
+## Free tiers worth knowing
+
+These don't require student verification:
+
+| Tool           | What you get                            |
+| -------------- | --------------------------------------- |
+| **Claude.ai**  | Free tier with usage limits             |
+| **ChatGPT**    | Free tier available                     |
+| **Gemini**     | Free at gemini.google.com               |
+| **NotebookLM** | 100 notebooks, 50 sources each          |
+| **Cloudinary** | Image/video storage and transformations |
+| **Vercel**     | Free web project deployment             |
+| **Netlify**    | Free static site hosting                |
+
+## A note on subscriptions
+
+Some tools want your credit card even for "free" trials. That's a business model designed to charge you when you forget to cancel.
+
+I don't require paid subscriptions in my courses. If you choose to use a trial that requires payment info, set a reminder to cancel before it renews.
+
+Your future self will thank you.
+
+---
+
+_The tools change constantly, but the pattern holds: students get access to professional-grade resources. Take advantage of it while you can._

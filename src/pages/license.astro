@@ -1,0 +1,160 @@
+---
+/**
+ * license.astro - Terms of use and license information
+ */
+
+import MainLayout from '../layouts/MainLayout.astro';
+
+const currentYear = new Date().getFullYear();
+---
+
+<MainLayout
+  title="Terms of Use | HyBit Studio"
+  description="Terms of use, trademark notice, and content license for HyBit Studio."
+>
+  <article class="license-page">
+    <h1>Terms of Use</h1>
+    <p class="effective">Effective: {currentYear}</p>
+
+    <section>
+      <h2>Trademark Notice</h2>
+      <p>
+        <strong>HyBit Studio&trade;</strong> and <strong>HyBit&trade;</strong> are trademarks of Cynthia Teeters.
+        These marks may not be used in connection with any product or service without prior written permission.
+      </p>
+    </section>
+
+    <section>
+      <h2>Content License</h2>
+      <p>
+        All content on this site — including but not limited to articles, tutorials, cheatsheets,
+        code examples, images, and educational materials — is the intellectual property of
+        Cynthia Teeters and is protected by copyright law.
+      </p>
+
+      <h3>Permitted uses</h3>
+      <ul>
+        <li>Personal learning and reference</li>
+        <li>Sharing links to content (with attribution)</li>
+        <li>Brief quotations with attribution and link to the original</li>
+      </ul>
+
+      <h3>Prohibited without written permission</h3>
+      <ul>
+        <li>Reproducing, republishing, or redistributing content</li>
+        <li>Creating derivative works</li>
+        <li>Commercial use of any kind</li>
+        <li>Using content to train AI/ML models</li>
+        <li>Incorporating content into courses, workshops, or training materials</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Code Examples</h2>
+      <p>
+        Code snippets published on this site are provided for educational purposes.
+        You may use them in your own projects, but the surrounding explanatory content
+        remains protected by copyright.
+      </p>
+    </section>
+
+    <section>
+      <h2>Educational Institution Use</h2>
+      <p>
+        Educators wishing to use HyBit Studio content in their courses should
+        contact me directly to discuss licensing arrangements.
+      </p>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p>
+        For permissions, licensing inquiries, or questions about these terms,
+        please contact Cynthia Teeters.
+      </p>
+    </section>
+
+    <section class="disclaimer">
+      <h2>Disclaimer</h2>
+      <p>
+        Content is provided "as is" without warranty of any kind. While I strive for accuracy,
+        I make no guarantees about the completeness or currentness of the information.
+        Use at your own discretion.
+      </p>
+    </section>
+  </article>
+</MainLayout>
+
+<style>
+  .license-page {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    color: var(--dark-brown);
+    margin-bottom: 0.5rem;
+  }
+
+  .effective {
+    color: var(--light-brown);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+
+  section {
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    color: var(--warm-orange);
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--soft-orange);
+  }
+
+  section:first-of-type h2 {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  h3 {
+    color: var(--medium-brown);
+    font-size: 1.1rem;
+    margin: 1rem 0 0.5rem 0;
+  }
+
+  p {
+    color: var(--dark-brown);
+    line-height: 1.7;
+  }
+
+  ul {
+    color: var(--dark-brown);
+    line-height: 1.7;
+    padding-left: 1.5rem;
+  }
+
+  li {
+    margin-bottom: 0.25rem;
+  }
+
+  .disclaimer {
+    background-color: var(--peach-background);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  .disclaimer h2 {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  .disclaimer p {
+    margin-bottom: 0;
+    font-size: 0.95rem;
+  }
+</style>

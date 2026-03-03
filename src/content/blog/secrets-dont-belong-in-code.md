@@ -1,0 +1,98 @@
+---
+title: "Why Secrets Don't Belong in Code"
+subtitle: "Git remembers what you delete"
+description: "You just signed up for an API. Where do you put the key? If your first instinct is 'paste it in my JavaScript file,' here's why that's a problem."
+pubDate: 2026-02-15
+category: tutorials
+draft: false
+---
+
+You just signed up for a weather API. They gave you a key: `sk_live_abc123xyz`. Where do you put it?
+
+If your first instinct is "just paste it into my JavaScript file," you're not alone. Almost everyone does this at first. And it's a real problem.
+
+## The problem in one sentence
+
+When you put a secret directly in your code, anyone who can see your code can see your secret.
+
+## This happens constantly
+
+Lots of people dig through code looking for keys. Automated bots scan GitHub constantly, looking for patterns that match API keys and passwords.
+
+GitGuardian's 2024 report found **12.8 million new secrets exposed** in public GitHub repos in a single year. That's about 24 secrets leaked every minute.
+
+Some services like AWS have automated systems that detect when their keys appear on GitHub and immediately disable them—because the abuse starts within minutes.
+
+## But I deleted it
+
+No. This is the part that surprises people.
+
+Git remembers everything. Every commit you've ever made is stored in the repository history. Even if you delete the secret in a new commit, the old commit still has it.
+
+```bash
+git log --all -p -- config.js
+```
+
+There it is, in the diff from your first commit. Deleting a secret doesn't erase it from history. It's like crossing out a word in pen—you can still read it underneath.
+
+If the repo was ever public, even briefly, assume the secret is compromised. Rotate it immediately.
+
+## The fix: environment variables
+
+Instead of putting secrets in your code, put them in the environment.
+
+**Step 1:** Create a `.env` file in your project root
+
+```
+VITE_API_KEY=sk_live_abc123xyz789
+```
+
+**Step 2:** Add `.env` to your `.gitignore`
+
+```
+.env
+```
+
+**Step 3:** Read the variable in your code
+
+```javascript
+export default {
+  apiKey: import.meta.env.VITE_API_KEY,
+};
+```
+
+**Step 4:** Create a `.env.example` file (this one gets committed)
+
+```
+VITE_API_KEY=your_api_key_here
+```
+
+| File           | Contains real secrets? | Committed to Git? |
+| -------------- | ---------------------- | ----------------- |
+| `.env`         | Yes                    | No                |
+| `.env.example` | No                     | Yes               |
+| `config.js`    | No                     | Yes               |
+
+## The frontend caveat
+
+Here's what surprises people: environment variables protect your source code, not your users' browsers.
+
+When you use `import.meta.env.VITE_API_KEY` in frontend JavaScript, the build tool replaces it with the actual value. The secret ends up in the bundled JavaScript sent to browsers.
+
+For truly secret keys (database passwords, payment processing), the key should **never touch frontend code**. Use a backend or serverless function instead.
+
+## Why AI gets this wrong
+
+If you ask AI to connect to an API, it will often give you:
+
+```javascript
+const API_KEY = "your-api-key-here";
+```
+
+AI gives you the shortest working answer. Hardcoding works. Environment variables add steps. AI optimizes for "get you unblocked" not "keep your secrets safe."
+
+**This is why you review AI code.** When you see a string that looks like a key directly in source code, stop and ask: "Should this be in an environment variable?"
+
+---
+
+_Habits form now. In your first job, you'll work with real API keys that cost real money. If your muscle memory says "paste it in the code," you'll do it without thinking._
