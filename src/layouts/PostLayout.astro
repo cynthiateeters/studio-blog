@@ -16,57 +16,45 @@ interface Props {
   heroImage?: string;
 }
 
-const {
-  title,
-  subtitle,
-  description,
-  pubDate,
-  updatedDate,
-  category,
-  heroImage
-} = Astro.props;
+const { title, subtitle, description, pubDate, updatedDate, category, heroImage } = Astro.props;
 
 const pageTitle = `${title} | HyBit Studio`;
 
 const formattedDate = pubDate.toLocaleDateString('en-US', {
   year: 'numeric',
   month: 'long',
-  day: 'numeric'
+  day: 'numeric',
 });
 
 const formattedUpdateDate = updatedDate?.toLocaleDateString('en-US', {
   year: 'numeric',
   month: 'long',
-  day: 'numeric'
+  day: 'numeric',
 });
 ---
 
 <MainLayout title={pageTitle} description={description}>
-  <article class="post">
-    <header class="post-header">
+  <article class='post'>
+    <header class='post-header'>
       <CategoryNav currentCategory={category} />
 
-      <div class="post-meta">
+      <div class='post-meta'>
         <time datetime={pubDate.toISOString()}>{formattedDate}</time>
-        {updatedDate && (
-          <span class="updated">Updated: {formattedUpdateDate}</span>
-        )}
-        <span class="category-badge">{category}</span>
+        {updatedDate && <span class='updated'>Updated: {formattedUpdateDate}</span>}
+        <span class='category-badge'>{category}</span>
       </div>
 
       <h1>{title}</h1>
-      {subtitle && <p class="subtitle">{subtitle}</p>}
+      {subtitle && <p class='subtitle'>{subtitle}</p>}
     </header>
 
-    {heroImage && (
-      <img src={heroImage} alt="" class="hero-image" />
-    )}
+    {heroImage && <img src={heroImage} alt='' class='hero-image' />}
 
-    <div class="post-content">
+    <div class='post-content'>
       <slot />
     </div>
 
-    <footer class="post-attribution">
+    <footer class='post-attribution'>
       <p>— My story. Edited with Claude Code — the same AI I teach with and build with every day.</p>
     </footer>
   </article>
@@ -74,7 +62,7 @@ const formattedUpdateDate = updatedDate?.toLocaleDateString('en-US', {
 
 <style>
   .post {
-    max-width: 700px;
+    max-width: 80ch;
     margin: 0 auto;
   }
 

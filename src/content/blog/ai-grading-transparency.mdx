@@ -7,6 +7,8 @@ category: stories
 draft: false
 ---
 
+import ComparisonGrid from '../../components/ComparisonGrid.astro';
+
 I use AI to help evaluate student assignments. And I tell my students exactly how.
 
 This might sound controversial, but hear me out. The goal isn't to automate grading—it's to grade more fairly.
@@ -83,11 +85,24 @@ Students see that vague inputs get vague outputs—whether that's a student subm
 
 Human grader drift and AI context drift share the same solution:
 
-| Human grader drift                        | AI context drift                                 |
-| ----------------------------------------- | ------------------------------------------------ |
-| Fatigue changes attention to detail       | Long contexts dilute focus on key elements       |
-| Previous submissions influence perception | Earlier conversation shapes later responses      |
-| Criteria interpretation shifts over time  | Instructions can be "forgotten" in long sessions |
+<ComparisonGrid
+  left={{
+    title: "Human grader drift",
+    items: [
+      "Fatigue changes attention to detail",
+      "Previous submissions influence perception",
+      "Criteria interpretation shifts over time"
+    ]
+  }}
+  right={{
+    title: "AI context drift",
+    items: [
+      "Long contexts dilute focus on key elements",
+      "Earlier conversation shapes later responses",
+      "Instructions can be \"forgotten\" in long sessions"
+    ]
+  }}
+/>
 
 **The fix for both:** Clear structure, explicit criteria, and anchoring reference points.
 

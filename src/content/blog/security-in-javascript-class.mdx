@@ -7,6 +7,8 @@ category: tutorials
 draft: false
 ---
 
+import DataList from '../../components/DataList.astro';
+
 This is a JavaScript class. Students signed up to learn JavaScript. So why am I talking about security audits, npm vulnerabilities, and environment variables?
 
 Fair question. Here's my answer.
@@ -54,11 +56,11 @@ Students are already dependency managers whether they realize it or not. The que
 
 ## The three most common beginner mistakes
 
-| Mistake                                     | What happens                                        |
-| ------------------------------------------- | --------------------------------------------------- |
-| Displaying user input without sanitizing it | Attackers run code in your users' browsers (XSS)    |
-| Putting API keys in source code             | Anyone with repo access can steal credentials       |
-| Ignoring outdated dependencies              | Known exploits that automated tools find in seconds |
+<DataList items={[
+  { term: "Displaying user input without sanitizing", definition: "Attackers run code in your users' browsers (XSS)" },
+  { term: "Putting API keys in source code", definition: "Anyone with repo access can steal credentials" },
+  { term: "Ignoring outdated dependencies", definition: "Known exploits that automated tools find in seconds" }
+]} />
 
 These aren't advanced attacks. They're the programming equivalent of leaving your front door unlocked. You wouldn't need a hacker—just someone who checks.
 

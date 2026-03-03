@@ -7,6 +7,8 @@ category: tips
 draft: false
 ---
 
+import DataList from '../../components/DataList.astro';
+
 Job postings ask for "JavaScript developers." Students study JavaScript syntax. But there's a gap between what people think the job is and what the job actually is.
 
 Here's what I tell my students on day one.
@@ -32,14 +34,14 @@ The other seven steps are also the job.
 
 If I had to estimate how professional developers spend their time:
 
-| Activity                             | Percentage |
-| ------------------------------------ | ---------- |
-| Writing new code                     | 30-40%     |
-| Reading existing code                | 20-25%     |
-| Debugging and testing                | 15-20%     |
-| Code review (giving and receiving)   | 10-15%     |
-| Tooling, dependencies, configuration | 10-15%     |
-| Documentation and communication      | 5-10%      |
+<DataList items={[
+  { term: "Writing new code", definition: "30-40%" },
+  { term: "Reading existing code", definition: "20-25%" },
+  { term: "Debugging and testing", definition: "15-20%" },
+  { term: "Code review (giving and receiving)", definition: "10-15%" },
+  { term: "Tooling, dependencies, configuration", definition: "10-15%" },
+  { term: "Documentation and communication", definition: "5-10%" }
+]} />
 
 The percentages shift depending on the role and company, but the pattern holds: writing code is less than half the work.
 

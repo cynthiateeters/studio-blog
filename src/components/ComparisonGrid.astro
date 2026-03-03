@@ -1,0 +1,89 @@
+---
+/**
+ * ComparisonGrid.astro - Side-by-side comparison that stacks on mobile
+ * Use for comparing two concepts, approaches, or workflows
+ */
+
+interface Props {
+  left: {
+    title: string;
+    items: string[];
+  };
+  right: {
+    title: string;
+    items: string[];
+  };
+}
+
+const { left, right } = Astro.props;
+---
+
+<div class="comparison-grid">
+  <div class="comparison-column">
+    <h4 class="comparison-title">{left.title}</h4>
+    <ul class="comparison-list">
+      {left.items.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+  </div>
+  <div class="comparison-column">
+    <h4 class="comparison-title">{right.title}</h4>
+    <ul class="comparison-list">
+      {right.items.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+  </div>
+</div>
+
+<style>
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .comparison-column {
+    padding: 1.25rem;
+    background-color: var(--peach-background);
+    border-radius: 0.5rem;
+  }
+
+  .comparison-column:first-child {
+    border-left: 3px solid var(--warm-orange);
+  }
+
+  .comparison-column:last-child {
+    border-left: 3px solid var(--teal-darker);
+  }
+
+  .comparison-title {
+    margin: 0 0 0.75rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dark-brown);
+  }
+
+  .comparison-list {
+    margin: 0;
+    padding-left: 1.25rem;
+    color: var(--medium-brown);
+  }
+
+  .comparison-list li {
+    margin-bottom: 0.5rem;
+  }
+
+  .comparison-list li:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 600px) {
+    .comparison-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+</style>

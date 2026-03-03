@@ -7,6 +7,8 @@ category: tutorials
 draft: false
 ---
 
+import DataList from '../../components/DataList.astro';
+
 You ran `npm install` and it downloaded over a hundred packages. Do you trust all of them?
 
 You didn't write those packages. You probably didn't read their code. But they're running on your machine, and they'll ship with your project.
@@ -33,12 +35,12 @@ You never installed esbuild. You don't know it's there. But it's in your project
 
 When someone discovers a security vulnerability, it gets a **CVE**—a Common Vulnerabilities and Exposures identifier. Think of it as a serial number for a specific bug.
 
-| Severity | What it means                        |
-| -------- | ------------------------------------ |
-| Low      | Minor issue, hard to exploit         |
-| Moderate | Real risk under certain conditions   |
-| High     | Significant risk, likely exploitable |
-| Critical | Actively dangerous, fix immediately  |
+<DataList items={[
+  { term: "Low", definition: "Minor issue, hard to exploit" },
+  { term: "Moderate", definition: "Real risk under certain conditions" },
+  { term: "High", definition: "Significant risk, likely exploitable" },
+  { term: "Critical", definition: "Actively dangerous, fix immediately" }
+]} />
 
 ## How to check
 

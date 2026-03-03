@@ -7,6 +7,8 @@ category: tips
 draft: false
 ---
 
+import DataList from '../../components/DataList.astro';
+
 AI-powered development tools have become standard in professional workflows. As a student, you have access to many of these tools for free—either through student programs or generous free tiers.
 
 Knowing what's available (and what the tradeoffs are) is part of being a resourceful developer.
@@ -36,15 +38,15 @@ Google offers students a free 1-year trial of Google AI Pro, including:
 
 These don't require student verification:
 
-| Tool           | What you get                            |
-| -------------- | --------------------------------------- |
-| **Claude.ai**  | Free tier with usage limits             |
-| **ChatGPT**    | Free tier available                     |
-| **Gemini**     | Free at gemini.google.com               |
-| **NotebookLM** | 100 notebooks, 50 sources each          |
-| **Cloudinary** | Image/video storage and transformations |
-| **Vercel**     | Free web project deployment             |
-| **Netlify**    | Free static site hosting                |
+<DataList items={[
+  { term: "Claude.ai", definition: "Free tier with usage limits" },
+  { term: "ChatGPT", definition: "Free tier available" },
+  { term: "Gemini", definition: "Free at gemini.google.com" },
+  { term: "NotebookLM", definition: "100 notebooks, 50 sources each" },
+  { term: "Cloudinary", definition: "Image/video storage and transformations" },
+  { term: "Vercel", definition: "Free web project deployment" },
+  { term: "Netlify", definition: "Free static site hosting" }
+]} />
 
 ## A note on subscriptions
 

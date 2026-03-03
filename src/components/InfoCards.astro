@@ -1,0 +1,108 @@
+---
+/**
+ * InfoCards.astro - Flexible cards for multi-attribute data
+ * Use for reference tables, file listings, or categorized information
+ */
+
+interface Props {
+  items: Array<{
+    title: string;
+    description?: string;
+    tags?: string[];
+    attributes?: Array<{
+      label: string;
+      value: string;
+    }>;
+  }>;
+}
+
+const { items } = Astro.props;
+---
+
+<div class="info-cards">
+  {items.map(({ title, description, tags, attributes }) => (
+    <div class="info-card">
+      <h4 class="card-title">{title}</h4>
+      {description && <p class="card-description">{description}</p>}
+      {attributes && attributes.length > 0 && (
+        <dl class="card-attributes">
+          {attributes.map(({ label, value }) => (
+            <>
+              <dt>{label}</dt>
+              <dd>{value}</dd>
+            </>
+          ))}
+        </dl>
+      )}
+      {tags && tags.length > 0 && (
+        <div class="card-tags">
+          {tags.map((tag) => (
+            <span class="tag">{tag}</span>
+          ))}
+        </div>
+      )}
+    </div>
+  ))}
+</div>
+
+<style>
+  .info-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .info-card {
+    padding: 1rem;
+    background-color: var(--peach-background);
+    border-radius: 0.5rem;
+    border-top: 3px solid var(--warm-orange);
+  }
+
+  .card-title {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dark-brown);
+    font-family: 'Source Code Pro', monospace;
+  }
+
+  .card-description {
+    margin: 0 0 0.75rem 0;
+    font-size: 0.9rem;
+    color: var(--medium-brown);
+  }
+
+  .card-attributes {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.25rem 0.75rem;
+    margin: 0 0 0.75rem 0;
+    font-size: 0.85rem;
+  }
+
+  .card-attributes dt {
+    color: var(--light-brown);
+  }
+
+  .card-attributes dd {
+    margin: 0;
+    color: var(--dark-brown);
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.75rem;
+    background-color: var(--soft-orange);
+    color: var(--dark-brown);
+    border-radius: 0.25rem;
+  }
+</style>

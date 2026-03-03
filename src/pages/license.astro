@@ -8,29 +8,21 @@ import MainLayout from '../layouts/MainLayout.astro';
 const currentYear = new Date().getFullYear();
 ---
 
-<MainLayout
-  title="Terms of Use | HyBit Studio"
-  description="Terms of use, trademark notice, and content license for HyBit Studio."
->
-  <article class="license-page">
+<MainLayout title='Terms of Use | HyBit Studio' description='Terms of use, trademark notice, and content license for HyBit Studio.'>
+  <article class='license-page'>
     <h1>Terms of Use</h1>
-    <p class="effective">Effective: {currentYear}</p>
+    <p class='effective'>Effective: {currentYear}</p>
 
     <section>
       <h2>Trademark Notice</h2>
       <p>
-        <strong>HyBit Studio&trade;</strong> and <strong>HyBit&trade;</strong> are trademarks of Cynthia Teeters.
-        These marks may not be used in connection with any product or service without prior written permission.
+        <strong>HyBit Studio&trade;</strong> and <strong>HyBit&trade;</strong> are trademarks of Cynthia Teeters. These marks may not be used in connection with any product or service without prior written permission.
       </p>
     </section>
 
     <section>
       <h2>Content License</h2>
-      <p>
-        All content on this site — including but not limited to articles, tutorials, cheatsheets,
-        code examples, images, and educational materials — is the intellectual property of
-        Cynthia Teeters and is protected by copyright law.
-      </p>
+      <p>All content on this site — including but not limited to articles, tutorials, cheatsheets, code examples, images, and educational materials — is the intellectual property of Cynthia Teeters and is protected by copyright law.</p>
 
       <h3>Permitted uses</h3>
       <ul>
@@ -51,43 +43,29 @@ const currentYear = new Date().getFullYear();
 
     <section>
       <h2>Code Examples</h2>
-      <p>
-        Code snippets published on this site are provided for educational purposes.
-        You may use them in your own projects, but the surrounding explanatory content
-        remains protected by copyright.
-      </p>
+      <p>Code snippets published on this site are provided for educational purposes. You may use them in your own projects, but the surrounding explanatory content remains protected by copyright.</p>
     </section>
 
     <section>
       <h2>Educational Institution Use</h2>
-      <p>
-        Educators wishing to use HyBit Studio content in their courses should
-        contact me directly to discuss licensing arrangements.
-      </p>
+      <p>Educators wishing to use HyBit Studio content in their courses should contact me directly to discuss licensing arrangements.</p>
     </section>
 
     <section>
       <h2>Contact</h2>
-      <p>
-        For permissions, licensing inquiries, or questions about these terms,
-        please contact Cynthia Teeters.
-      </p>
+      <p>For permissions, licensing inquiries, or questions about these terms, please contact Cynthia Teeters.</p>
     </section>
 
-    <section class="disclaimer">
+    <section class='disclaimer'>
       <h2>Disclaimer</h2>
-      <p>
-        Content is provided "as is" without warranty of any kind. While I strive for accuracy,
-        I make no guarantees about the completeness or currentness of the information.
-        Use at your own discretion.
-      </p>
+      <p>Content is provided "as is" without warranty of any kind. While I strive for accuracy, I make no guarantees about the completeness or currentness of the information. Use at your own discretion.</p>
     </section>
   </article>
 </MainLayout>
 
 <style>
   .license-page {
-    max-width: 700px;
+    max-width: 80ch;
     margin: 0 auto;
   }
 

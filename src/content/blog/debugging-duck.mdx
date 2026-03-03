@@ -7,11 +7,21 @@ category: stories
 draft: false
 ---
 
+import ComparisonGrid from '../../components/ComparisonGrid.astro';
+
 I mail rubber ducks to my students.
 
 Yellow ones, mostly. Sometimes orange or blue if they have a preference. I buy them in bulk and ship them to whoever fills out the form.
 
 This isn't a gimmick. It's a teaching tool with decades of history behind it—and some interesting psychology.
+
+<video controls preload="metadata" style="width: 100%; max-width: 800px; border-radius: 8px;">
+  <source
+    src="https://res.cloudinary.com/cynthia-teeters/video/upload/f_auto,q_auto/canvas/videos/hap-rubber-duck-gift"
+    type="video/mp4"
+  />
+  Your browser does not support the video tag.
+</video>
 
 ## What is rubber duck debugging?
 
@@ -51,12 +61,26 @@ Here's something I've noticed: students who are comfortable with rubber duck deb
 
 The skills are related:
 
-| Rubber duck debugging           | Prompting AI                    |
-| ------------------------------- | ------------------------------- |
-| Explain the problem clearly     | Write a clear prompt            |
-| State what you expected         | Describe the desired outcome    |
-| Describe what actually happened | Provide context about the error |
-| Walk through your logic         | Share relevant code             |
+<ComparisonGrid
+  left={{
+    title: "Rubber duck debugging",
+    items: [
+      "Explain the problem clearly",
+      "State what you expected",
+      "Describe what actually happened",
+      "Walk through your logic"
+    ]
+  }}
+  right={{
+    title: "Prompting AI",
+    items: [
+      "Write a clear prompt",
+      "Describe the desired outcome",
+      "Provide context about the error",
+      "Share relevant code"
+    ]
+  }}
+/>
 
 Students who can articulate a problem to a duck can articulate it to ChatGPT or Claude. Students who skip the articulation step paste in code and say "fix this"—and get frustrated when the AI misunderstands.
 

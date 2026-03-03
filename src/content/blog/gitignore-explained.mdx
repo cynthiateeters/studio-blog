@@ -7,6 +7,8 @@ category: tutorials
 draft: false
 ---
 
+import InfoCards from '../../components/InfoCards.astro';
+
 Every project has files that shouldn't be shared. Some contain secrets. Some are too large. Some are generated automatically.
 
 The `.gitignore` file tells Git which files to ignore.
@@ -83,13 +85,13 @@ Git doesn't track empty folders. If you need one in your repo (like a `logs/` fo
 
 ## Quick reference
 
-| What to ignore | Why                    | Example         |
-| -------------- | ---------------------- | --------------- |
-| Secrets        | Security               | `.env`          |
-| Dependencies   | Too large, regenerated | `node_modules/` |
-| Build output   | Regenerated            | `dist/`         |
-| AI logs        | Privacy                | `.specstory/`   |
-| OS files       | Irrelevant             | `.DS_Store`     |
+<InfoCards items={[
+  { title: ".env", description: "Secrets", tags: ["security"] },
+  { title: "node_modules/", description: "Dependencies", tags: ["too large", "regenerated"] },
+  { title: "dist/", description: "Build output", tags: ["regenerated"] },
+  { title: ".specstory/", description: "AI logs", tags: ["privacy"] },
+  { title: ".DS_Store", description: "OS files", tags: ["irrelevant"] }
+]} />
 
 ---
 
