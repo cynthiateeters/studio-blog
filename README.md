@@ -83,12 +83,10 @@ public/                # Static assets (fonts, images)
 - **stories** - Narratives and classroom experiences
 - **announcements** - News and updates
 
-## Contributing
+## License
 
-Contributions are welcome! Please:
+Copyright (c) 2026 Cynthia Teeters. All rights reserved.
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/your-feature`)
-3. Commit your changes
-4. Push to your branch
-5. Open a pull request
+This repository contains proprietary content. See [LICENSE](LICENSE) for terms.
+
+HyBit Studio™ and HyBit™ are trademarks of Cynthia Teeters. See [TRADEMARK](TRADEMARK) for usage guidelines.
