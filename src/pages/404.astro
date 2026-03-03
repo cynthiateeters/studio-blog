@@ -1,0 +1,62 @@
+---
+/**
+ * 404.astro - Page not found
+ */
+
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout
+  title="Page Not Found | HyBit Studio"
+  description="The page you're looking for doesn't exist."
+>
+  <article class="not-found">
+    <h1>404</h1>
+    <p class="message">Page not found</p>
+    <p class="description">
+      The page you're looking for doesn't exist or has been moved.
+    </p>
+    <a href="/" class="home-link">Back to home</a>
+  </article>
+</MainLayout>
+
+<style>
+  .not-found {
+    text-align: center;
+    padding: 4rem 2rem;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 6rem;
+    color: var(--warm-orange);
+    margin: 0;
+    line-height: 1;
+  }
+
+  .message {
+    font-size: 1.5rem;
+    color: var(--dark-brown);
+    margin: 0.5rem 0 1.5rem;
+  }
+
+  .description {
+    color: var(--medium-brown);
+    margin-bottom: 2rem;
+  }
+
+  .home-link {
+    display: inline-block;
+    background-color: var(--warm-orange);
+    color: var(--cream-white);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .home-link:hover {
+    background-color: var(--dark-brown);
+  }
+</style>
