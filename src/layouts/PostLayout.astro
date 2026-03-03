@@ -65,6 +65,10 @@ const formattedUpdateDate = updatedDate?.toLocaleDateString('en-US', {
     <div class="post-content">
       <slot />
     </div>
+
+    <footer class="post-attribution">
+      <p>— My story. Edited with Claude Code — the same AI I teach with and build with every day.</p>
+    </footer>
   </article>
 </MainLayout>
 
@@ -169,5 +173,18 @@ const formattedUpdateDate = updatedDate?.toLocaleDateString('en-US', {
     padding-left: 1.5rem;
     font-style: italic;
     color: var(--medium-brown);
+  }
+
+  .post-attribution {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--soft-orange);
+  }
+
+  .post-attribution p {
+    margin: 0;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--light-brown);
   }
 </style>
