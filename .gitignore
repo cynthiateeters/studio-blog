@@ -25,3 +25,6 @@ Thumbs.db
 .astro/
 
 reports/
+
+# Local Netlify folder
+.netlify

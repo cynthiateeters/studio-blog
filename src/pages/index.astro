@@ -22,23 +22,43 @@ const recentPosts = sortedPosts.slice(0, 6);
   description="AI-augmented curriculum resources and practitioner insights for web developers, from educator Cynthia Teeters."
 >
   <section class="hero">
-    <div class="hero-text">
-      <h1>HyBit Studio</h1>
-      <p class="intro">
-        I'm Cynthia Teeters, an educator and practitioner building AI-augmented
-        curriculum for web developers. I teach Web Development and JavaScript at
-        Raritan Valley Community College, where I've been using GitHub Classroom since 2019.
-      </p>
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>HyBit Studio</h1>
+        <p class="intro">
+          I'm Cynthia Teeters, an educator and practitioner building AI-augmented
+          curriculum for web developers. I teach Web Development and JavaScript at
+          Raritan Valley Community College, where I've been using GitHub Classroom since 2019.
+        </p>
+        <p>
+          Here you'll find resources, cheatsheets, and practitioner insights on working
+          with AI tools intentionally — not as a shortcut, but as a collaborator. The
+          difference between developers who thrive with AI and those who struggle comes
+          down to process, context, and transparency.
+        </p>
+        <p class="mission">
+          This is where I share what I'm learning while building HAP Learning Labs and
+          teaching students to be thoughtful practitioners in an AI-native world.
+        </p>
+      </div>
+    </div>
+    <div class="hap-callout">
+      <div class="hap-image">
+        <img
+          src="https://res.cloudinary.com/cynthia-teeters/image/upload/f_auto,q_auto,w_150/canvas/hap/hap-headshot"
+          alt="HAP robot friendly headshot portrait with lightbulb head"
+          width="150"
+          height="150"
+        />
+      </div>
       <p>
-        Here you'll find resources, cheatsheets, and practitioner insights on working
-        with AI tools intentionally — not as a shortcut, but as a collaborator. The
-        difference between developers who thrive with AI and those who struggle comes
-        down to process, context, and transparency.
+        <strong>Meet HAP</strong> — my AI learning companion who helps students explore
+        JavaScript and web development concepts through interactive adventures.
+        Visit HAP Learning Labs to explore the full universe.
       </p>
-      <p class="mission">
-        This is where I share what I'm learning while building HAP Learning Labs and
-        teaching students to be thoughtful practitioners in an AI-native world.
-      </p>
+      <a href="https://hap-gateway.netlify.app/" class="hap-link">
+        HAP Learning Labs &rarr;
+      </a>
     </div>
   </section>
 
@@ -73,6 +93,16 @@ const recentPosts = sortedPosts.slice(0, 6);
     border-left: 4px solid var(--warm-orange);
   }
 
+  .hero-content {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+
+  .hero-text {
+    flex: 1;
+  }
+
   .hero-text h1 {
     color: var(--dark-brown);
     margin-bottom: 1.25rem;
@@ -101,6 +131,48 @@ const recentPosts = sortedPosts.slice(0, 6);
     font-style: italic;
   }
 
+  .hap-callout {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid hsl(30 20% 85%);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .hap-image {
+    flex-shrink: 0;
+  }
+
+  .hap-image img {
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px hsl(30 20% 20% / 0.15);
+  }
+
+  .hap-callout p {
+    margin: 0;
+    color: var(--medium-brown);
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .hap-link {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background-color: var(--teal-darker);
+    color: var(--cream-white);
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+  }
+
+  .hap-link:hover {
+    background-color: var(--teal-darker);
+    color: var(--cream-white);
+  }
+
   .posts-section h2 {
     color: var(--dark-brown);
     margin-bottom: 1rem;
@@ -127,6 +199,18 @@ const recentPosts = sortedPosts.slice(0, 6);
   .view-all:hover {
     background-color: var(--orange-darker);
     color: var(--cream-white);
+  }
+
+  @media (max-width: 768px) {
+    .hap-callout {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .hap-image img {
+      width: 120px;
+      height: 120px;
+    }
   }
 
   @media (max-width: 600px) {

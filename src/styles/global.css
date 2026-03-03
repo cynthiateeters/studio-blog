@@ -102,6 +102,23 @@ img {
   display: block;
 }
 
+/* Figures */
+figure {
+  margin: 1.5rem auto;
+  text-align: center;
+}
+
+figure img {
+  margin: 0 auto;
+}
+
+figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--medium-brown);
+  font-style: italic;
+}
+
 /* Lists */
 ul, ol {
   padding-left: 1.5rem;
