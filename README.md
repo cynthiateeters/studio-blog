@@ -6,8 +6,7 @@ Cynthia Teeters' blog on AI-augmented curriculum for web developers. Built with 
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) v18 or higher
-- npm (comes with Node.js)
+- [Bun](https://bun.sh/) v1.0 or higher (or Node.js v18+ with npm)
 
 ### Getting started
 
@@ -21,13 +20,13 @@ Cynthia Teeters' blog on AI-augmented curriculum for web developers. Built with 
 2. Install dependencies:
 
    ```bash
-   npm install
+   bun install
    ```
 
 3. Start the development server:
 
    ```bash
-   npm run dev
+   bun run dev
    ```
 
 4. Open your browser to [http://localhost:4321](http://localhost:4321)
@@ -36,13 +35,13 @@ Cynthia Teeters' blog on AI-augmented curriculum for web developers. Built with 
 
 | Command           | Description                        |
 | ----------------- | ---------------------------------- |
-| `npm run dev`     | Start dev server at localhost:4321 |
-| `npm run build`   | Build production site to `dist/`   |
-| `npm run preview` | Preview production build locally   |
+| `bun run dev`     | Start dev server at localhost:4321 |
+| `bun run build`   | Build production site to `dist/`   |
+| `bun run preview` | Preview production build locally   |
 
 ## Project structure
 
-```
+```text
 src/
 ├── components/        # Reusable Astro components
 ├── content/
@@ -74,7 +73,7 @@ public/                # Static assets (fonts, images)
 
 3. Write your content below the frontmatter
 
-4. Verify with `npm run build`
+4. Verify with `bun run build`
 
 ### Categories
 
@@ -82,6 +81,10 @@ public/                # Static assets (fonts, images)
 - **tips** - Quick insights and best practices
 - **stories** - Narratives and classroom experiences
 - **announcements** - News and updates
+
+## Contributing
+
+Found an error or have a question? See [CONTRIBUTING.md](CONTRIBUTING.md) for how to report issues.
 
 ## License
 

@@ -7,7 +7,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "check:docs": "node scripts/check-docs.js",
+    "astro": "astro",
+    "prepare": "husky"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
@@ -22,5 +24,8 @@
     "hap"
   ],
   "author": "Cynthia Teeters",
-  "license": "SEE LICENSE IN LICENSE"
+  "license": "SEE LICENSE IN LICENSE",
+  "devDependencies": {
+    "husky": "^9.1.7"
+  }
 }

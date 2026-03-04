@@ -1,0 +1,156 @@
+---
+title: "Speed up Claude Code with modern CLI tools"
+description: "Install bun, ripgrep, fd, sd, jq, and GNU parallel to dramatically speed up Claude Code's shell operations"
+pubDate: 2026-03-04
+category: tips
+---
+
+import InfoCards from '../../components/InfoCards.astro';
+import Callout from '../../components/Callout.astro';
+
+Claude Code runs shell commands constantly — finding files, searching code, processing JSON, running scripts. The default Unix tools (`find`, `grep`, `sed`, `node`) work, but modern replacements written in Rust and Zig are significantly faster.
+
+Installing these tools and telling Claude Code to prefer them can noticeably speed up your workflow.
+
+### A real example
+
+I searched this blog's codebase for the word "astro":
+
+- **grep**: 1.7 seconds
+- **ripgrep**: 0.025 seconds (68x faster)
+
+A typical Claude Code session might run 50-100 searches. At 1.7 seconds each, that's nearly 3 minutes of waiting. With ripgrep, it's under 3 seconds total. The difference compounds fast.
+
+## The tools
+
+<InfoCards items={[
+  {
+    title: "bun",
+    description: "Run JS/TS, install packages",
+    attributes: [
+      { label: "Replaces", value: "node / npm" },
+      { label: "Speedup", value: "4-25x" }
+    ]
+  },
+  {
+    title: "ripgrep (rg)",
+    description: "Search file contents",
+    attributes: [
+      { label: "Replaces", value: "grep" },
+      { label: "Speedup", value: "10x+" }
+    ]
+  },
+  {
+    title: "fd",
+    description: "Find files by name/pattern",
+    attributes: [
+      { label: "Replaces", value: "find" },
+      { label: "Speedup", value: "5-10x" }
+    ]
+  },
+  {
+    title: "sd",
+    description: "Find-and-replace in files",
+    attributes: [
+      { label: "Replaces", value: "sed" },
+      { label: "Speedup", value: "2-5x" }
+    ]
+  },
+  {
+    title: "jq",
+    description: "JSON processing (essential, often missing)",
+    attributes: [
+      { label: "Replaces", value: "n/a" },
+      { label: "Speedup", value: "n/a" }
+    ]
+  },
+  {
+    title: "GNU parallel",
+    description: "Run shell tasks concurrently",
+    attributes: [
+      { label: "Replaces", value: "n/a" },
+      { label: "Speedup", value: "n/a" }
+    ]
+  }
+]} />
+
+## Install on macOS
+
+```shell
+# Install bun (has its own installer)
+curl -fsSL https://bun.sh/install | bash
+
+# Install the rest via Homebrew
+brew install ripgrep fd sd jq parallel
+```
+
+## Install on Windows
+
+<Callout type="note">
+The Windows instructions below were verified against package registries but not tested on a live machine. If you hit any issues, [connect with me on LinkedIn](https://www.linkedin.com/in/cynthia-teeters/) — I'd love to get these right.
+</Callout>
+
+Windows has three package managers. Pick one approach and stick with it.
+
+### Option A: winget (built into Windows 11)
+
+```powershell
+winget install Oven-sh.Bun
+winget install BurntSushi.ripgrep.MSVC
+winget install sharkdp.fd
+winget install jqlang.jq
+```
+
+Note: `sd` is not available via winget. Install it with scoop (`scoop install sd`) or cargo (`cargo install sd`).
+
+### Option B: scoop (popular with developers, no admin rights needed)
+
+First install scoop if you don't have it:
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+```
+
+Then install the tools:
+
+```powershell
+scoop install bun ripgrep fd sd jq
+```
+
+### GNU parallel on Windows
+
+GNU parallel is a Unix tool with no native Windows version. Use it through WSL:
+
+```powershell
+wsl --install
+```
+
+Then inside your WSL terminal:
+
+```shell
+sudo apt-get install parallel
+```
+
+## Tell Claude Code to use them
+
+The key step: add these tools to your `~/.claude/CLAUDE.md` file so Claude Code knows they're available. Without this, Claude Code will fall back to the slower defaults.
+
+Add this section to your `CLAUDE.md`:
+
+```markdown
+## Installed CLI tools
+
+- **bun** is installed — prefer over `node`/`npm` for running scripts, installing packages, and executing JS/TS
+- **ripgrep** (`rg`) is installed — prefer over `grep` for shell searches
+- **fd** is installed — prefer over `find` for file finding by name/pattern
+- **sd** is installed — prefer over `sed` for find-and-replace in files
+- **jq** is installed — use for JSON processing in shell pipelines
+- **GNU parallel** is installed — use for concurrent shell tasks when beneficial
+```
+
+## Why this works
+
+Claude Code reads `CLAUDE.md` at the start of every session. When it sees these instructions, it will reach for the faster tool every time it needs to search, find, or process something in the shell.
+
+The speed gains compound quickly. A typical coding session involves dozens of file searches, content greps, and script executions. Shaving milliseconds off each one adds up.

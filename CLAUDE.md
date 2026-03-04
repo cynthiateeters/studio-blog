@@ -9,10 +9,10 @@ This file provides guidance to Claude Code when working with this repository.
 ## Commands
 
 ```bash
-npm install          # Install dependencies (run first!)
-npm run dev          # Start dev server at localhost:4321
-npm run build        # Production build to dist/
-npm run preview      # Preview production build
+bun install          # Install dependencies (run first!)
+bun run dev          # Start dev server at localhost:4321
+bun run build        # Production build to dist/
+bun run preview      # Preview production build
 ```
 
 ## Architecture
@@ -78,12 +78,23 @@ Write in Cynthia's voice as an educator and practitioner:
 
 Use "CSS custom property" terminology, never "CSS variable".
 
+## No tables in blog posts
+
+**Never use markdown tables in blog content** - they are not responsive. Use these components instead:
+
+- `InfoCards` - Multi-attribute data (tool lists, file references, categorized info)
+- `DataList` - Key-value pairs (stats, definitions, settings)
+- `ComparisonGrid` - Side-by-side comparisons (two approaches, before/after)
+- `Callout` - Tips, warnings, notes (use instead of blockquotes for important info)
+
+Posts using components must be `.mdx` files with imports at the top.
+
 ## Adding a new post
 
 1. Create `src/content/blog/your-post-slug.md`
 2. Add required frontmatter (title, description, pubDate, category)
 3. Write content in Cynthia's educator voice
-4. Run `npm run build` to verify
+4. Run `bun run build` to verify
 
 ## Copyright
 

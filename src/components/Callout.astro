@@ -1,0 +1,99 @@
+---
+/**
+ * Callout.astro - Styled callouts for tips, warnings, and notes
+ * Use instead of blockquotes for important information
+ */
+
+interface Props {
+  type?: 'note' | 'tip' | 'warning';
+}
+
+const { type = 'note' } = Astro.props;
+
+const icons = {
+  note: '📝',
+  tip: '💡',
+  warning: '⚠️'
+};
+
+const labels = {
+  note: 'Note',
+  tip: 'Tip',
+  warning: 'Warning'
+};
+---
+
+<aside class={`callout callout-${type}`} role="note">
+  <span class="callout-icon" aria-hidden="true">{icons[type]}</span>
+  <div class="callout-content">
+    <strong class="callout-label">{labels[type]}</strong>
+    <slot />
+  </div>
+</aside>
+
+<style>
+  .callout {
+    display: flex;
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+    padding: 1rem 1.25rem;
+    border-radius: 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  .callout-icon {
+    flex-shrink: 0;
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+
+  .callout-content {
+    flex: 1;
+  }
+
+  .callout-label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .callout-content :global(p) {
+    margin: 0;
+  }
+
+  .callout-content :global(p + p) {
+    margin-top: 0.5rem;
+  }
+
+  /* Note - teal accent */
+  .callout-note {
+    background-color: hsl(180 25% 95%);
+    border-left: 3px solid var(--teal-darker);
+  }
+
+  .callout-note .callout-label {
+    color: var(--teal-darker);
+  }
+
+  /* Tip - green accent */
+  .callout-tip {
+    background-color: hsl(120 25% 95%);
+    border-left: 3px solid hsl(120 40% 35%);
+  }
+
+  .callout-tip .callout-label {
+    color: hsl(120 40% 35%);
+  }
+
+  /* Warning - orange accent */
+  .callout-warning {
+    background-color: hsl(35 80% 95%);
+    border-left: 3px solid var(--warm-orange);
+  }
+
+  .callout-warning .callout-label {
+    color: var(--warm-orange);
+  }
+</style>
