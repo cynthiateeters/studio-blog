@@ -1,27 +1,25 @@
 # HyBit Studio
 
-Cynthia Teeters' blog on AI-augmented curriculum for web developers. Astro + MDX + Netlify.
+Cynthia Teeters' blog on AI-augmented curriculum. Astro + MDX + Netlify.
 
 ## Commands
 
 ```bash
-bun install       # Install dependencies
-bun run dev       # Dev server → localhost:4321
-bun run build     # Build to dist/
-bun run preview   # Preview build
+bun install        # Dependencies
+bun run dev        # localhost:4321
+bun run build      # Build to dist/
+bun run preview    # Preview build
+bun run check:docs # Validate alignment
 ```
 
 ## Critical rules
 
-- **CSS colors**: HSL only, never hex/rgb. Say "CSS custom property" not "variable"
-- **No markdown tables in posts** — not responsive. Use MDX components instead:
-  - `InfoCards` — multi-attribute data
-  - `DataList` — key-value pairs
-  - `ComparisonGrid` — side-by-side comparisons
-  - `Callout` — tips, warnings, notes (replaces blockquotes)
-- **Voice**: First-person educator, professional but approachable, practical insights
+- **No markdown tables in posts** — use MDX components:
+  - `InfoCards` (multi-attribute) | `DataList` (key-value)
+  - `ComparisonGrid` (side-by-side) | `Callout` (tips/warnings/notes)
+- **Voice**: First-person educator, professional but approachable
 
-## Blog post frontmatter
+## Blog frontmatter
 
 ```yaml
 ---
@@ -37,19 +35,15 @@ Posts with components → `.mdx` with imports at top.
 
 ## Key paths
 
-- `src/content/blog/` — posts
-- `src/content.config.ts` — schema
-- `src/components/` — Astro components
-- `src/layouts/PostLayout.astro` → `MainLayout.astro`
+- Posts: `src/content/blog/` | Schema: `src/content.config.ts`
+- Components: `src/components/` | Layouts: `src/layouts/`
 
 ## Deployment
 
-Netlify auto-deploys. Test with branches before production:
+Netlify auto-deploys:
 
-- `main` → Production (hybit-studio.netlify.app)
-- Other branches → `branch--hybit-studio.netlify.app`
+- `main` → hybit-studio.netlify.app
+- Branches → `branch--hybit-studio.netlify.app`
 - PRs → `deploy-preview-N--hybit-studio.netlify.app`
 
-## Copyright
-
-All content owned by Cynthia Teeters.
+All content © Cynthia Teeters.

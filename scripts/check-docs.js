@@ -21,7 +21,7 @@ function loadFile(path) {
 
 // Extract commands from markdown code blocks
 function extractCommands(markdown, runner = "bun") {
-  const pattern = new RegExp(`${runner} (?:run )?(\\w+)`, "g");
+  const pattern = new RegExp(`${runner} (?:run )?([\\w:-]+)`, "g");
   const matches = [...markdown.matchAll(pattern)];
   return [...new Set(matches.map((m) => m[1]))];
 }
@@ -88,7 +88,36 @@ function checkStructureExists() {
   }
 }
 
-// Check 3: Categories in README match content schema
+// Check 3: Key integrations are documented
+function checkIntegrations() {
+  const pkg = JSON.parse(loadFile("package.json"));
+  const readme = loadFile("README.md");
+  const claude = loadFile("CLAUDE.md");
+  const docs = (readme || "") + (claude || "");
+
+  // Key integrations that should be mentioned somewhere
+  const integrations = {
+    "astro-expressive-code": "code highlighting with copy buttons",
+    "rehype-slug": "heading anchor links",
+    "rehype-autolink-headings": "heading anchor links",
+  };
+
+  for (const [pkg_name, feature] of Object.entries(integrations)) {
+    if (pkg.dependencies?.[pkg_name] || pkg.devDependencies?.[pkg_name]) {
+      // Check if feature or package is mentioned
+      const mentioned =
+        docs.toLowerCase().includes(pkg_name.toLowerCase()) ||
+        docs.toLowerCase().includes(feature.toLowerCase());
+      if (!mentioned) {
+        errors.push(
+          `Package '${pkg_name}' (${feature}) installed but not documented in README or CLAUDE.md`,
+        );
+      }
+    }
+  }
+}
+
+// Check 4: Categories in README match content schema
 function checkCategories() {
   const readme = loadFile("README.md");
   const schema = loadFile("src/content.config.ts");
@@ -124,6 +153,7 @@ console.log("Checking documentation alignment...\n");
 
 checkCommandsMatch();
 checkStructureExists();
+checkIntegrations();
 checkCategories();
 
 if (errors.length > 0) {
