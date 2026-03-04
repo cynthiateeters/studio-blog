@@ -1,0 +1,43 @@
+---
+title: "Claude Code: /compact with targeted instructions"
+description: "Speed up the /compact command by telling Claude what to keep and drop, cutting compression time from minutes to seconds."
+pubDate: 2026-03-03
+category: tips
+---
+
+import DataList from '../../components/DataList.astro';
+
+The bare `/compact` command compresses your conversation but has to read everything to decide what matters — tool output, file contents, web fetches, search results. That takes minutes and often loses important context.
+
+## The fix: tell it what to keep and drop
+
+Create `~/.claude/commands/compact.md` with one line:
+
+```markdown
+/compact Focus on: current task, file paths modified, decisions made, user preferences stated. Drop: tool output, search results, web content, file contents already acted on.
+```
+
+Now `/compact` is a slash command that expands to the full instruction automatically.
+
+## Why it's faster
+
+A typical session context breakdown:
+
+<DataList items={[
+  { term: "Tool output (bash, file reads)", definition: "~50–60%" },
+  { term: "Web fetches, search results", definition: "~15–20%" },
+  { term: "Actual conversation + decisions", definition: "~15–20%" },
+  { term: "File contents already acted on", definition: "~10%" }
+]} />
+
+Without instructions, `/compact` reads all of it before writing the summary. With instructions, it skips 70–80% of the tokens entirely — only extracting the small slice that actually matters going forward.
+
+The result: seconds instead of minutes, and a leaner summary that leaves more headroom in the next context window.
+
+## Customize it for your workflow
+
+Adjust the keep/drop lists to match what you actually need to preserve:
+
+```markdown
+/compact Focus on: current task, file paths modified, decisions made, user preferences stated, open questions. Drop: tool output, search results, web content, file contents already acted on, error messages that were resolved.
+```
