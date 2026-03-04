@@ -96,6 +96,30 @@ Posts using components must be `.mdx` files with imports at the top.
 3. Write content in Cynthia's educator voice
 4. Run `bun run build` to verify
 
+## Deployment
+
+Site deploys to Netlify. Use branches to test before production:
+
+```bash
+# Create a test branch
+git checkout -b test/my-feature
+
+# Push to get a preview deploy
+git push -u origin test/my-feature
+# Preview URL: test-my-feature--hybit-studio.netlify.app
+
+# When ready, merge to main for production
+git checkout main
+git merge test/my-feature
+git push
+```
+
+**Deploy contexts:**
+
+- `main` branch → Production (hybit-studio.netlify.app)
+- Other branches → Branch deploy (branch-name--hybit-studio.netlify.app)
+- Pull requests → Deploy preview (deploy-preview-N--hybit-studio.netlify.app)
+
 ## Copyright
 
 All content is owned by Cynthia Teeters.

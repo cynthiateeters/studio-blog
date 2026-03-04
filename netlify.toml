@@ -4,3 +4,15 @@
 
 [build.environment]
   BUN_VERSION = "1"
+
+# Production deploys (main branch only)
+[context.production]
+  command = "bun install && bun run build"
+
+# Branch deploys (any non-main branch)
+[context.branch-deploy]
+  command = "bun install && bun run build"
+
+# PR deploy previews
+[context.deploy-preview]
+  command = "bun install && bun run build"
