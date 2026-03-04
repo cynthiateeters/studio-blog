@@ -1,0 +1,130 @@
+---
+title: "Writing and optimizing custom Claude Code slash commands"
+description: "How I built a fast Netlify status checker, from slow CLI wrapper to optimized Bun script with direct API access."
+pubDate: 2026-03-04
+category: tutorials
+---
+
+import DataList from '../../components/DataList.astro';
+import Callout from '../../components/Callout.astro';
+
+I wanted a quick way to check my Netlify deploy status without leaving Claude Code. What started as a simple CLI wrapper turned into an optimization journey that cut response time from several seconds to near-instant.
+
+## The goal
+
+A `/netlify-status` slash command that shows the latest deploy state, date, and commit message. Simple output like:
+
+```
+✓ 2026-03-04 Add footer links and heading anchors
+```
+
+## Attempt 1: wrap the Netlify CLI
+
+My first approach was straightforward — call the Netlify CLI from a bash script.
+
+Create `~/.claude/commands/netlify-status.md`:
+
+````markdown
+# Netlify status
+
+Check deploy status.
+
+```bash
+netlify api listSiteDeploys --data '{"site_id": "YOUR_SITE_ID"}' | jq -r '.[0] | ...'
+```
+````
+
+**Problem**: This was slow. The Netlify CLI loads all of Node.js, authenticates, and spawns a process. Each call took 2-3 seconds.
+
+## Attempt 2: cache the site ID
+
+I noticed the CLI was making two API calls — one to get the site ID, another to get deploys. I cached the site ID in a file:
+
+```bash
+CACHE="$HOME/.claude/.netlify-site-id"
+if [[ -f "$CACHE" && $(find "$CACHE" -mmin -60) ]]; then
+  SITE_ID=$(cat "$CACHE")
+else
+  SITE_ID=$(netlify status --json | jq -r '.siteData["site-id"]')
+  echo "$SITE_ID" > "$CACHE"
+fi
+```
+
+**Result**: Saved one API call, but still slow. The CLI overhead was the real bottleneck.
+
+## Attempt 3: direct API with Bun
+
+The breakthrough came when I discovered the `netlify` npm package — a direct API client that skips the CLI entirely.
+
+```bash
+cd ~/.claude/scripts && bun add netlify
+```
+
+Then I wrote a Bun script that:
+
+1. Reads the auth token from the Netlify CLI's config file (no separate credential management)
+2. Makes a direct API call using the `netlify` package
+3. Formats and outputs the result
+
+```javascript
+#!/usr/bin/env bun
+import { NetlifyAPI } from "netlify";
+import { readFileSync } from "fs";
+import { homedir } from "os";
+import { join } from "path";
+
+// Reuse token from Netlify CLI config
+const configPath = join(homedir(), "Library/Preferences/netlify/config.json");
+const config = JSON.parse(readFileSync(configPath, "utf-8"));
+const token = Object.values(config.users)[0]?.auth?.token;
+
+const client = new NetlifyAPI(token);
+const siteId = "your-site-id-here";
+const count = parseInt(process.argv[2]) || 1;
+
+const deploys = await client.listSiteDeploys({ site_id: siteId, per_page: count });
+for (const d of deploys) {
+  const state = d.state === "ready" ? "✓" : d.state === "building" ? "⏳" : "✗";
+  const date = d.created_at.split("T")[0];
+  const title = (d.title || "-").split("\n")[0].slice(0, 50);
+  console.log(`${state} ${date} ${title}`);
+}
+```
+
+**Result**: Near-instant response. Bun's fast startup plus direct HTTP call eliminated all the overhead.
+
+## The final setup
+
+<DataList items={[
+  { term: "Slash command", definition: "~/.claude/commands/netlify-status.md" },
+  { term: "Script", definition: "~/.claude/scripts/netlify-status.js" },
+  { term: "Permission", definition: "Bash(bun ~/.claude/scripts/netlify-status.js:*)" }
+]} />
+
+The slash command file is now just a pointer to the script:
+
+````markdown
+# Netlify status
+
+```bash
+bun ~/.claude/scripts/netlify-status.js [count]
+```
+````
+
+And I added an optional argument for showing multiple deploys: `/netlify-status 5` shows the last five.
+
+## Key takeaways
+
+**Start simple, optimize when needed.** The CLI wrapper was a perfectly valid first attempt. I only optimized when the slowness became annoying.
+
+**Reuse existing credentials.** Instead of managing a separate Netlify token, I read from the CLI's config file. One less thing to set up.
+
+**Bun is fast.** For scripts that need to run frequently, Bun's startup time makes a noticeable difference compared to Node.js.
+
+**Put the site ID in CLAUDE.md.** I added the Netlify site ID to my project's CLAUDE.md file. Now it's documented and available as context for other commands.
+
+<Callout type="tip">
+Don't forget to add your script to the permissions in `~/.claude/settings.json` so it runs without prompting.
+</Callout>
+
+The entire optimization took about 20 minutes. Now I can check deploy status instantly without context-switching to the Netlify dashboard.

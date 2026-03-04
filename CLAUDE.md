@@ -14,10 +14,8 @@ bun run check:docs # Validate alignment
 
 ## Critical rules
 
-- **No markdown tables in posts** — use MDX components:
-  - `InfoCards` (multi-attribute) | `DataList` (key-value)
-  - `ComparisonGrid` (side-by-side) | `Callout` (tips/warnings/notes)
 - **Voice**: First-person educator, professional but approachable
+- **Blog posts**: Always use `.mdx` extension (never `.md`) so global rules apply
 
 ## Blog frontmatter
 

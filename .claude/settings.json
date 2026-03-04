@@ -3,7 +3,12 @@
     "allow": [
       "mcp__plugin_context-mode_context-mode__search",
       "Bash(bun install)",
-      "Bash(bun run build)"
+      "Bash(bun run build)",
+      "Bash(netlify status --json)",
+      "Bash(chmod +x ~/.claude/scripts/netlify-status.sh)",
+      "Bash(bun ~/.claude/scripts/netlify-status.js)",
+      "Bash(bun ~/.claude/scripts/netlify-status.js 3)",
+      "Bash(bun add astro-expressive-code)"
     ],
     "additionalDirectories": [
       "/Users/cynthiateeters/Documents/Teaching/hybit-studio-design"

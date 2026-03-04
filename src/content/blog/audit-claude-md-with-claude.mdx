@@ -1,0 +1,99 @@
+---
+title: "Using Claude to audit your CLAUDE.md files"
+description: "A meta workflow: ask Claude Code to optimize the very configuration files that guide its behavior. Here's what I learned about the 200-line limit."
+pubDate: 2026-03-04
+category: tips
+---
+
+import Callout from '../../components/Callout.astro';
+import DataList from '../../components/DataList.astro';
+
+There's something satisfying about using Claude to improve Claude. I had two CLAUDE.md files that had grown organically over weeks — one global, one project-specific — and I suspected they had redundancy issues. So I asked Claude Code to audit them.
+
+## The prompt
+
+```text
+audit CLAUDE.md and ~/.claude/CLAUDE.md and optimize
+```
+
+That's it. Claude read both files, identified duplication (CSS rules appeared in both), and rewrote them with tighter formatting.
+
+## What Claude found
+
+The global file had a contact section that provided zero value to AI context. The project file duplicated CSS rules already in the global config. Both had verbose formatting that could be compressed.
+
+<DataList items={[
+  { term: "Global CLAUDE.md", definition: "68 → 45 lines (34% reduction)" },
+  { term: "Project CLAUDE.md", definition: "58 → 49 lines (16% reduction)" }
+]} />
+
+## The 200-line rule
+
+After the optimization, I wondered: how big is too big? A web search led me to the official guidance in the [Claude Code memory documentation](https://code.claude.com/docs/en/memory):
+
+<Callout type="note">
+**Target under 200 lines per CLAUDE.md file.** Longer files consume more context and reduce adherence. If your instructions are growing large, split them using imports or `.claude/rules/` files.
+</Callout>
+
+This makes sense. CLAUDE.md loads into every session's context window. A 500-line file eats tokens before you've even started working — and Claude's adherence to instructions degrades as context fills up.
+
+## How to split large files
+
+If you're over 200 lines, the docs recommend two approaches:
+
+**Imports**: Reference other markdown files from your CLAUDE.md:
+
+```markdown
+@docs/coding-standards.md
+@docs/api-conventions.md
+```
+
+Imported files get inlined at session start — they load every time. This helps with organization but doesn't save tokens. You're just splitting one big file into smaller pieces.
+
+**Rules directory**: Put path-specific rules in `~/.claude/rules/` (global) or `.claude/rules/` (project). Use YAML frontmatter to specify which files trigger the rule:
+
+```markdown
+---
+globs: ["**/*.mdx"]
+---
+
+# No markdown tables in MDX
+
+Markdown tables are not responsive. They break on mobile.
+
+Use MDX components instead:
+- `InfoCards` — multi-attribute data
+- `DataList` — key-value pairs
+- `ComparisonGrid` — side-by-side comparisons
+```
+
+This rule only loads when I'm editing `.mdx` files. When I'm working on JavaScript or config files, it stays out of the context window entirely. That's the difference between imports (always load) and rules (conditional).
+
+## Should you use /init?
+
+Claude Code offers `/init` to generate a starter CLAUDE.md by analyzing your codebase. It detects build systems, test frameworks, and code patterns. If a CLAUDE.md already exists, it suggests improvements rather than overwriting.
+
+It's a fine starting point — better than an empty file, and it catches things you might forget to document (build commands, test runners). But there are tradeoffs:
+
+- Generated content may not match your actual workflow
+- Discovered "conventions" can be wrong or outdated
+- It creates stuff you don't need, wasting tokens
+- It can create the illusion of being "done"
+
+My preference: build CLAUDE.md organically. Every time Claude does something wrong, ask it to add a rule. Every time you repeat yourself, ask Claude to add that preference. You don't have to edit the file manually — Claude knows its own configuration format.
+
+Most importantly: when Claude makes an error or takes too long, ask it to evaluate what went wrong and update CLAUDE.md to prevent it next time. This turns mistakes into permanent improvements.
+
+After a week of this, you have a file that reflects how *you* actually work — not what Claude guessed from your package.json.
+
+The audit workflow complements either approach. Whether you started with `/init` or built from scratch, periodically ask Claude to optimize. That catches bloat before it eats your context window.
+
+## The takeaway
+
+Claude Code is good at optimizing text for token efficiency — including its own configuration. If your CLAUDE.md has grown unwieldy, just ask:
+
+```text
+audit CLAUDE.md and optimize for token efficiency
+```
+
+You'll get a cleaner file and probably learn something about what you've been repeating unnecessarily.

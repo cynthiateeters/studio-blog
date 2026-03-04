@@ -4,7 +4,7 @@
  * Ensures README.md and CLAUDE.md stay in sync with package.json and project structure
  */
 
-import { readFileSync, existsSync } from "fs";
+import { readFileSync, existsSync, readdirSync } from "fs";
 import { join } from "path";
 
 const ROOT = process.cwd();
@@ -148,6 +148,47 @@ function checkCategories() {
   }
 }
 
+// Check 5: No .md files in blog directory (must use .mdx)
+function checkBlogExtensions() {
+  const blogDir = join(ROOT, "src/content/blog");
+  if (!existsSync(blogDir)) return;
+
+  const files = readdirSync(blogDir);
+  const mdFiles = files.filter((f) => f.endsWith(".md") && !f.endsWith(".mdx"));
+
+  for (const file of mdFiles) {
+    errors.push(`Blog post '${file}' uses .md extension. Rename to .mdx so global rules apply.`);
+  }
+}
+
+// Check 6: No forbidden HTML elements in built output
+function checkBuiltHtml() {
+  const distBlog = join(ROOT, "dist/blog");
+  if (!existsSync(distBlog)) return; // Build hasn't run
+
+  const forbidden = ["<table", "<marquee", "<blink"];
+
+  function scanDir(dir) {
+    const entries = readdirSync(dir, { withFileTypes: true });
+    for (const entry of entries) {
+      const fullPath = join(dir, entry.name);
+      if (entry.isDirectory()) {
+        scanDir(fullPath);
+      } else if (entry.name === "index.html") {
+        const html = readFileSync(fullPath, "utf-8");
+        for (const tag of forbidden) {
+          if (html.includes(tag)) {
+            const relativePath = fullPath.replace(ROOT + "/dist/", "");
+            errors.push(`'${relativePath}' contains forbidden element: ${tag}>`);
+          }
+        }
+      }
+    }
+  }
+
+  scanDir(distBlog);
+}
+
 // Run all checks
 console.log("Checking documentation alignment...\n");
 
@@ -155,6 +196,8 @@ checkCommandsMatch();
 checkStructureExists();
 checkIntegrations();
 checkCategories();
+checkBlogExtensions();
+checkBuiltHtml();
 
 if (errors.length > 0) {
   console.log("Documentation alignment issues found:\n");

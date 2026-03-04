@@ -39,6 +39,14 @@ Cynthia Teeters' blog on AI-augmented curriculum for web developers. Built with 
 | `bun run build`   | Build production site to `dist/`   |
 | `bun run preview` | Preview production build locally   |
 
+## Features
+
+- **Code highlighting with copy buttons** — powered by astro-expressive-code with line highlighting and file names
+- **Heading anchor links** — click any heading to get a shareable URL (rehype-slug + rehype-autolink-headings)
+- **RSS feed** — subscribe at `/rss.xml`
+- **Sitemap** — auto-generated for SEO
+- **MDX support** — use components in blog posts
+
 ## Project structure
 
 ```text
