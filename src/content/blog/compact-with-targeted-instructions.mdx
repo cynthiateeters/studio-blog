@@ -2,6 +2,7 @@
 title: "Claude Code: /compact with targeted instructions"
 description: "Speed up the /compact command by telling Claude what to keep and drop, cutting compression time from minutes to seconds."
 pubDate: 2026-03-03
+updatedDate: 2026-03-04
 category: tips
 ---
 
@@ -9,15 +10,17 @@ import DataList from '../../components/DataList.astro';
 
 The bare `/compact` command compresses your conversation but has to read everything to decide what matters — tool output, file contents, web fetches, search results. That takes minutes and often loses important context.
 
-## The fix: tell it what to keep and drop
+## The fix: tell it what to keep
 
-Create `~/.claude/commands/compact.md` with one line:
+Create `~/.claude/commands/compact-guide.md` with one line:
 
 ```markdown
 /compact Focus on: current task, file paths modified, decisions made, user preferences stated. Drop: tool output, search results, web content, file contents already acted on.
 ```
 
-Now `/compact` is a slash command that expands to the full instruction automatically.
+Now `/compact-guide` expands to the full instruction automatically.
+
+> **Why not `compact.md`?** Claude Code has a built-in `/compact` command that triggers actual context compression. A custom `compact.md` overrides it—your instructions expand but compression never happens. Use a different name so both work.
 
 ## Why it's faster
 
