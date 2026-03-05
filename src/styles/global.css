@@ -88,6 +88,19 @@ pre {
   border-radius: 0.5rem;
   padding: 1rem;
   overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+/* Expressive-code block spacing */
+.expressive-code {
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  pre,
+  .expressive-code {
+    margin-bottom: 2rem;
+  }
 }
 
 pre code {
